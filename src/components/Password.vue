@@ -1,23 +1,23 @@
 <template>
   <div>
   <el-button type="primary" @click="dialogrevisepwd = true">修改密码1</el-button>
-    <el-dialog title="修改密码" :visible.sync="dialogrevisepwd" width="600px" @close="closeDialog('passwordruleform2')">
-      <el-form :model="passwordruleform2" status-icon ref="passwordruleform2" :rules="passwordrules2" label-width="150px" >
-        <el-form-item label="原密码：" prop="oldpwd">
-          <el-input type="password" placeholder="请输入原密码" v-model="passwordruleform2.oldpwd" auto-complete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="新密码：" prop="newpwd">
-          <el-input type="password" placeholder="请输入新密码"  v-model="passwordruleform2.newpwd" auto-complete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="请再次输入新密码：" prop="checknewpwd">
-          <el-input type="password"  placeholder="请再次输入新密码" v-model="passwordruleform2.checknewpwd" auto-complete="off"></el-input>
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogrevisepwd = false">取 消</el-button>
-        <el-button type="primary" @click="revisePwd('passwordruleform2')">确 定</el-button>
-      </div>
-    </el-dialog>
+  <el-dialog title="修改密码" :visible.sync="dialogrevisepwd" width="600px" @close="closeDialog('passwordruleform2')">
+    <el-form :model="passwordruleform2" status-icon ref="passwordruleform2" :rules="passwordrules2" label-width="150px" >
+      <el-form-item label="原密码：" prop="oldpwd">
+        <el-input type="password" placeholder="请输入原密码" v-model="passwordruleform2.oldpwd" auto-complete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="新密码：" prop="newpwd">
+        <el-input type="password" placeholder="请输入新密码"  v-model="passwordruleform2.newpwd" auto-complete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="请再次输入新密码：" prop="checknewpwd">
+        <el-input type="password"  placeholder="请再次输入新密码" v-model="passwordruleform2.checknewpwd" auto-complete="off"></el-input>
+      </el-form-item>
+    </el-form>
+    <div slot="footer" class="dialog-footer">
+      <el-button @click="dialogrevisepwd = false">取 消</el-button>
+      <el-button type="primary" @click="revisePwd('passwordruleform2')">确 定</el-button>
+    </div>
+  </el-dialog>
   </div>
 </template>
 <script>
