@@ -29,6 +29,11 @@
           callback(new Error('请输入原密码！'));
         }else{
           //获取当前用户密码并校验
+          /*this.$axios.post().then(function (reponse) {
+            console.log(reponse);
+          }).catch(function (error) {
+            console.log(error);
+          });*/
           if(true){
             callback();
           }else{
