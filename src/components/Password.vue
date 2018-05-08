@@ -1,7 +1,7 @@
 <template>
   <div>
   <el-button type="primary" @click="dialogrevisepwd = true">修改密码1</el-button>
-    <el-dialog title="修改密码" :visible.sync="dialogrevisepwd" custom-class="pwddia" @close="closeDialog('passwordruleform2')">
+    <el-dialog title="修改密码" :visible.sync="dialogrevisepwd" width="600px" @close="closeDialog('passwordruleform2')">
       <el-form :model="passwordruleform2" status-icon ref="passwordruleform2" :rules="passwordrules2" label-width="150px" >
         <el-form-item label="原密码：" prop="oldpwd">
           <el-input type="password" placeholder="请输入原密码" v-model="passwordruleform2.oldpwd" auto-complete="off"></el-input>
@@ -100,11 +100,5 @@
   }
 </script>
 <style>
-  .el-dialog__header{
-    text-align: left;
-  }
-  .pwddia{
-    width:600px;
-  }
 
 </style>
