@@ -14,7 +14,7 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <!--<el-button @click="dialogrevisepwd = false">取 消</el-button>-->
+        <el-button @click="dialogrevisepwd = false">取 消</el-button>
         <el-button type="primary" @click="revisePwd('passwordruleform2')">确 定</el-button>
       </div>
     </el-dialog>
@@ -25,16 +25,12 @@
     name: 'Dialog',
     data() {
       let validateOldPwd = (rule, value, callback) => {
-        console.log(rule);
-        console.log(value.length);
-        console.log(callback);
         if (value === '') {
           callback(new Error('请输入原密码！'));
         }else{
           //获取当前用户密码并校验
           if(true){
             callback();
-            console.log('校验validateOldPwd通过');
           }else{
             callback('旧密码输入错误！');
           }
@@ -52,7 +48,6 @@
             this.$refs.passwordruleform2.validateField('checknewpwd')
           }
           callback();
-          console.log('校验validateNewPwd通过');
         }
       };
       let validateCheckPwd = (rule,value,callback) => {
@@ -64,7 +59,6 @@
           callback(new Error('请输入6到16位密码！'));
         } else {
           callback();
-          console.log('校验validateCheckPwd通过')
         }
       };
       return {
@@ -83,8 +77,6 @@
     },
     methods:{
       revisePwd(formName){
-        console.log(this);
-        console.log(formName);
         this.$refs[formName].validate((valid) => {
           if (valid) {
             this.dialogrevisepwd = false;
