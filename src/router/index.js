@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Dialog from '@/components/Dialog'
 import Password from '@/components/Password'
 import Download from '@/components/Download'
+import Config from '@/components/Config'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/download',
       name: 'Download',
       component: Download
+    },
+    {
+      path : '/config',
+      name : 'Config',
+      component : Config
     }
   ]
 })

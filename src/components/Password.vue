@@ -94,6 +94,8 @@
         });
       },
       closeDialog(formName){
+        console.log(formName);
+        console.log(this.$refs);
         this.$refs[formName].resetFields();
       }
     }
