@@ -65,7 +65,7 @@
             <el-input v-model="GISServer.GISServer_userName"></el-input>
           </el-form-item>
           <el-form-item label="密码" prop="GISServer_pwd">
-            <el-input type="password" :model="GISServer.GISServer_pwd"></el-input>
+            <el-input type="password" v-model="GISServer.GISServer_pwd"></el-input>
           </el-form-item>
           <el-form-item label="路径" prop="GISServer_address">
             <el-input v-model="GISServer.GISServer_address"></el-input>
@@ -128,7 +128,7 @@
             <el-input v-model="ViewServer.ViewServer_userName"></el-input>
           </el-form-item>
           <el-form-item label="密码" prop="ViewServer_pwd">
-            <el-input type="password" :model="ViewServer.ViewServer_pwd"></el-input>
+            <el-input type="password" v-model="ViewServer.ViewServer_pwd"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary">保存</el-button>
@@ -227,16 +227,43 @@ export default {
         }
     }
   },
+  // watch :{
+  //   BigDateServer : function () {
+  //     this.$http.post('http://localhost:3003/BigDateServer')
+  //       .then(function (response) {
+  //         console.log(response);
+  //       })
+  //       .catch(function (response) {
+  //         console.log(response);
+  //       });
+  //   }
+  // },
   methods:{
     changetab:function () {
-      console.log(this);
-      console.log(this.$data);
-      console.log(this.$refs);
-      console.log(11)
+
     }
   },
   created:function () {
-    console.log(this)
+    this.$http.get('http://localhost:3003/configData')
+      .then((response) => {
+        console.log(response);
+        this.BigDateServer = response.data[0];
+        this.IvaServer = response.data[0];
+        this.DomainConfig = response.data[0];
+        this.authSys = response.data[0];
+        this.ViewServer = response.data[0];
+        this.GISServer = response.data[0];
+      })
+      // .then(function (response) {
+      //   console.log(1);
+      //   console.log(this);
+      //   console.log(response.data[0]);
+      // })
+      .catch(function (response) {
+        console.log(2);
+        console.log(response);
+      });
+    // console.log(this)
   },
 }
 </script>
