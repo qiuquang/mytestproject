@@ -205,6 +205,6 @@ export default {
     text-align: center;
   }
 .el-form-item__label{
-  background: url();
+  /*background: url();*/
 }
 </style>
