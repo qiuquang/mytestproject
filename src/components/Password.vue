@@ -1,7 +1,7 @@
 <template>
   <div>
   <el-button type="primary" @click="dialogrevisepwd = true">修改密码1</el-button>
-  <el-dialog title="修改密码" :visible.sync="dialogrevisepwd" width="600px" @close="closeDialog('passwordruleform2')">
+  <el-dialog title="修改密码" :visible.sync="dialogrevisepwd" width="600px" @close="closeDialog('passwordruleform2')" :close-on-click-modal="false">
     <el-form :model="passwordruleform2" status-icon ref="passwordruleform2" :rules="passwordrules2" label-width="150px" >
       <el-form-item label="原密码：" prop="oldpwd">
         <el-input type="password" placeholder="请输入原密码" v-model="passwordruleform2.oldpwd" auto-complete="off"></el-input>
@@ -25,8 +25,11 @@
     name: 'Dialog',
     data() {
       let validateOldPwd = (rule, value, callback) => {
+        let pattern = new RegExp('[^A-Za-z0-9_]+');//只允许数字字母
         if (value === '') {
           callback(new Error('请输入原密码！'));
+        }else if(pattern.test(value)){//添加正则验证
+          callback(new Error('只允许输入数字和字母！'))
         }else{
           //获取当前用户密码并校验
           /*this.$axios.post().then(function (reponse) {
