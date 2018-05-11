@@ -32,19 +32,26 @@
           callback(new Error('只允许输入数字和字母！'))
         }else{
           //获取当前用户密码并校验
-          /*this.$axios.post().then(function (reponse) {
-            console.log(reponse);
+          this.$http({
+            method : 'get',
+            url : 'http://localhost:3000/password',
+            data : {
+              oldpwd : value
+            }
+          }).then(function (response) {
+            // console.log(response);
+            if(value !== response.data.oldpwd){
+              callback(new Error('旧密码输入错误！'));
+            }else{
+              callback();
+            }
           }).catch(function (error) {
             console.log(error);
-          });*/
-          if(true){
-            callback();
-          }else{
-            callback('旧密码输入错误！');
-          }
+            console.log('旧密码输入错误那错了！');
+          });
         }
       };
-      var validateNewPwd = (rule,value,callback) => {
+      let validateNewPwd = (rule,value,callback) => {
         if (value === '') {
           callback(new Error('请输入新密码！'));
         }else if(value === this.passwordruleform2.oldpwd){
@@ -85,15 +92,22 @@
     },
     methods:{
       revisePwd(formName){
+        console.log(this)
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.dialogrevisepwd = false;
-            this.$message({ message: "修改成功", type: "success" ,showClose : true });
-          } else {
-            this.$message({ message: "修改失败", type: "error" ,showClose : true });
-            return false;
+            console.log(this);
+            console.log(this.passwordruleform2.checknewpwd);
+            this.$http.post('http://localhost:3000/password',{oldpwd : this.passwordruleform2.newpwd}).then((response) => {
+              this.dialogrevisepwd = false;
+              console.log(1)
+              console.log(this)
+              this.$refs[formName].resetFields();
+              this.$message({ message: "修改成功", type: "success" ,showClose : true });
+            }).catch((err) => {
+              this.$message({ message: "修改失败", type: "error" ,showClose : true });
+              return false;
+            })
           }
-          this.$refs[formName].resetFields();
         });
       },
       closeDialog(formName){
