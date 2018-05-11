@@ -259,7 +259,7 @@ export default {
       //   console.log(this);
       //   console.log(response.data[0]);
       // })
-      .catch(function (response) {
+      .catch((response) => {
         console.log(2);
         console.log(response);
       });
