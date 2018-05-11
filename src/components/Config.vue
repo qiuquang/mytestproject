@@ -239,12 +239,12 @@ export default {
   //   }
   // },
   methods:{
-    changetab:function () {
-
+    changetab:function (){
+      console.log(11)
     }
   },
   created:function () {
-    this.$http.get('http://localhost:3003/configData')
+    this.$http.get('http://localhost:3000/configData')
       .then((response) => {
         console.log(response);
         this.BigDateServer = response.data[0];
@@ -276,5 +276,8 @@ export default {
 }
 .el-form{
   text-align: center;
+}
+.el-container{
+  /*background: #f00 ;*/
 }
 </style>
